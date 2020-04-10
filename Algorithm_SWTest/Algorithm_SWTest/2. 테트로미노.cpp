@@ -4,58 +4,92 @@
 using namespace std;
 int N, M;
 int Map[501][501];
+bool boolMap[501][501];
 int ens = 0;
 int dir[4][2] = { {1,0} ,{-1,0} ,{0,1}, {0,-1} };
-bool sizeCheck(int nextY,int nextX) {
-
-	if (nextY < 0 || nextY >= N || nextX < 0 || nextX >= M) {
-		return false;
+int upY, downY;
+int leftX, rightX;
+void fuckYoudir(int y ,int x) {
+	int sum = 0;
+	upY = y - 1;
+	downY = y + 1;
+	leftX = x - 1;
+	rightX = x + 1;
+	//  け
+	//けけけ
+	if (upY >= 0 && leftX >= 0 && rightX < M) {
+		sum = Map[upY][x] + Map[y][leftX] + Map[y][rightX] + Map[y][x];
+		if (sum > ens) {
+			ens = sum;
+		}
 	}
-	else {
-		return true;
+	// けけけ
+	//   け
+	if (downY < N && leftX >= 0 && rightX < M) {
+		sum = Map[downY][x] + Map[y][leftX] + Map[y][rightX] + Map[y][x];
+		if (sum > ens) {
+			ens = sum;
+		}
+	}
+	// け
+	// けけ
+	// け
+	if (upY >= 0 && downY < N && rightX < M) {
+		sum = Map[upY][x] + Map[downY][x] + Map[y][rightX] + Map[y][x];
+		if (sum > ens) {
+			ens = sum;
+		}
+	}
+	//   け
+	// けけ
+	//   け
+	if (upY >= 0 && downY < N && leftX >= 0) {
+		sum = Map[upY][x] + Map[downY][x] + Map[y][leftX] + Map[y][x];
+		if (sum > ens) {
+			ens = sum;
+		}
 	}
 }
 void dfs(int y , int x, int cnt ,int sum) {
 
-	if (cnt ==4) {
+	if (cnt >= 4) {
 		if (sum > ens) {
-			ens == sum;
+			ens = sum;
 		}
+		return;
 	}
 	else {
-
 
 		for (int i = 0; i < 4; i++) {
 			int nextY = y + dir[i][0];
 			int nextX = x + dir[i][1];
 
-			if (sizeCheck(nextY, nextX)==false ) continue;
-			if (Map[nextY][nextX] == 0) continue;
+			if (nextY < 0 || nextY >= N || nextX < 0 || nextX >= M) continue;
+			if (boolMap[nextY][nextX] == true) continue;
 
-			int tmp = Map[nextY][nextX];
-			Map[nextY][nextX] = 0;
-			dfs(nextY, nextX, cnt + 1, sum + tmp);
-			Map[nextY][nextX] = tmp;
+			boolMap[nextY][nextX] = true;
+			dfs(nextY, nextX, cnt + 1, sum + Map[nextY][nextX]);
+			boolMap[nextY][nextX] = false;
 
 		}
 	}
 }
 int main() {
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 	scanf("%d %d",&N,&M);
-
 	for (int i = 0; i < N;i++) {
 		for (int j = 0; j < M;j++) {
 			scanf("%d", &Map[i][j]);
 		}
 	}
-
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
-			printf("%d", Map[i][j]);
+			boolMap[i][j] = true;
+			dfs(i, j, 1, Map[i][j]);
+			fuckYoudir(i,j);
+			boolMap[i][j] = false;
 		}
-		printf("\n");
 	}
-
+	printf("%d", ens);
 	return 0;
 }
