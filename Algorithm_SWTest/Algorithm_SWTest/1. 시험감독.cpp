@@ -5,7 +5,7 @@ int N; // 시험장의 갯수
 int B, C; // 총감독체크 인원 , 부감독 체크인원
 int A[1000000];
 int main() {
-    //freopen("input.txt","r",stdin);
+    freopen("input.txt","r",stdin);
     scanf("%d", &N);
     for (int i = 0; i < N; i++) {
         int input;
