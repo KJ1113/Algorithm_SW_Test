@@ -42,7 +42,7 @@ void fuckYoudir(int y ,int x) {
 	}
 	//   け
 	// けけ
-	//   け
+	///   け
 	if (upY >= 0 && downY < N && leftX >= 0) {
 		sum = Map[upY][x] + Map[downY][x] + Map[y][leftX] + Map[y][x];
 		if (sum > ens) {
