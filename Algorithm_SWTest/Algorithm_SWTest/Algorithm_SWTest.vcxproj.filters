@@ -24,7 +24,7 @@
     <ClCompile Include="3.연구소3.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="4. 게리맨더링 4.cpp">
+    <ClCompile Include="4.게리맨더링.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
