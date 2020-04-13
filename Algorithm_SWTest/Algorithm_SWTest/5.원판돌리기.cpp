@@ -4,11 +4,10 @@
 #include<queue>
 using namespace std;
 int N, M, T; //반지름(높이) , 원판안의 수,  회전수
-int Map[51][51];
-int dir[4][2] = { {1,0}, {0,1}, {0,-1} , {-1,0} };
-bool visted[51][51];
+int Map[50][50];
+bool visted[50][50];
 bool flag = false;
-void inputQueue(int nextY,int nextX, queue <pair<int, int>> &q) { //주소값으로 q 넘겨줘야함
+void inputQueue(int nextY, int nextX, queue <pair<int, int>>& q) {
 	flag = true;
 	Map[nextY][nextX] = 0;
 	visted[nextY][nextX] = true;
@@ -21,24 +20,22 @@ void bfs(int inputY, int inputX) {
 	q.push(pair<int, int>(inputY, inputX));
 	visted[inputY][inputX] = true;
 
-	while (!q.empty()){
+	while (!q.empty()) {
 		int conY = q.front().first;
 		int conX = q.front().second;
-		int nextY = 0;
-		int nextX = 0;
 		q.pop();
 
-		int next_up = conY-1;
-		int next_down = conY+1;
-		int next_right = conX+1;
-		int next_left = conX-1;
+		int next_up = conY - 1;
+		int next_down = conY + 1;
+		int next_right = conX + 1;
+		int next_left = conX - 1;
 		if (next_left < 0) next_left = M - 1;
 		if (next_right >= M) next_right = 0;
 
 		if (conTmp == Map[conY][next_right]) {
 			if (visted[conY][next_right] == false) {
 				Map[conY][conX] = 0;
-				inputQueue(conY, next_right,q);
+				inputQueue(conY, next_right, q);
 			}
 		}
 		if (conTmp == Map[conY][next_left]) {
@@ -65,9 +62,9 @@ void bfs(int inputY, int inputX) {
 		}
 	}
 }
-void runRotation(int index , int dir , int K) {
+void runRotation(int index, int dir, int K) {
 	// 0인경우 시계 방향
-	for (int go = 0; go< K;go++) {
+	for (int go = 0; go < K; go++) {
 		if (dir == 0) {
 			int tmp = Map[index][0];
 			Map[index][0] = Map[index][M - 1];
@@ -89,10 +86,10 @@ void runRotation(int index , int dir , int K) {
 	}
 }
 int main() {
-	freopen("input.txt","r",stdin);
-	scanf("%d %d %d", &N,&M,&T);
+	//freopen("input.txt","r",stdin);
+	scanf("%d %d %d", &N, &M, &T);
 	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < M;j++) {
+		for (int j = 0; j < M; j++) {
 			scanf("%d", &Map[i][j]);
 		}
 	}
@@ -106,44 +103,41 @@ int main() {
 			}
 		}
 		//---회전 완료----
+		int sumNum = 0;
+		vector <pair<int, int>> v;
+		flag = false;
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
 				visted[i][j] = false;
 			}
 		}
-		int cntNum = 0;
-		int sumNum = 0;
-		flag = false;
-
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
-				sumNum += Map[i][j];
 				if (visted[i][j] == false && Map[i][j] != 0) {
-					cntNum++;
-
+					sumNum += Map[i][j];
 					bfs(i, j);
+					v.push_back(pair<int, int>(i, j));
 				}
 			}
 		}
 
 		if (flag == false) {
-			for (int i = 0; i < N; i++) {
-				for (int j = 0; j < M; j++) {
-					if (visted[i][j] == true && Map[i][j] != 0) {
-						double avg = (double)sumNum / cntNum;
-						if ((double)Map[i][j] > avg) {
-							Map[i][j] = Map[i][j] - 1;
-						}
-						else if ((double)Map[i][j] == avg) {
-							Map[i][j];
-						}
-						else {
-							Map[i][j] = Map[i][j] + 1;
-						}
+			for (int i = 0; i < v.size(); i++) {
+				int y = v[i].first;
+				int x = v[i].second;
+				if (visted[y][x] == true && Map[y][x] != 0) {
+					double avg = (double)sumNum / v.size();
+					if ((double)Map[y][x] > avg) {
+						Map[y][x]--;
+					}
+					else if ((double)Map[y][x] == avg) {
+						continue;
+					}
+					else {
+						Map[y][x]++;
 					}
 				}
 			}
-
 		}
 	}
 	int ens = 0;
@@ -152,6 +146,6 @@ int main() {
 			ens += Map[i][j];
 		}
 	}
-	cout << ens ;
+	cout << ens;
 	return 0;
 }
