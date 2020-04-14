@@ -146,6 +146,6 @@ int main() {
 			ens += Map[i][j];
 		}
 	}
-	cout << ens;
+	printf("%d",ens);
 	return 0;
 }
