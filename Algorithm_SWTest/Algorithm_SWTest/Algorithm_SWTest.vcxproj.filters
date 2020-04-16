@@ -33,6 +33,9 @@
     <ClCompile Include="6. 게리맨더링2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="아기상어.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">
