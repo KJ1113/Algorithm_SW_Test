@@ -8,17 +8,17 @@ int N, M, K;
 int Map[MAX][MAX];
 int foodMap[MAX][MAX];
 int ans = 0;
-int dir[8][2] = { {1,0} ,{-1,0} ,{0,1} ,{0,-1} ,{1,1} ,{1,-1} ,{-1,1} ,{-1,-1} }; 
-struct plant{
+int dir[8][2] = { {1,0} ,{-1,0} ,{0,1} ,{0,-1} ,{1,1} ,{1,-1} ,{-1,1} ,{-1,-1} };
+struct plant {
 	int y, x;
 	int lifecnt = 1;
 	bool life = true;
 };
 vector<plant> plist[2];
-void push(plant inputP,int index) {
+void push(plant inputP, int index) {
 	plist[index].push_back(inputP);
 }
-void oneYear(){
+void oneYear() {
 
 	for (int index = 0; index < plist[0].size(); index++) {
 		int conY = plist[0][index].y;
@@ -36,7 +36,7 @@ void oneYear(){
 		int conX = plist[0][index].x;
 
 		if (plist[0][index].life == false) {
-			int sumfood = plist[0][index].lifecnt/2;
+			int sumfood = plist[0][index].lifecnt / 2;
 			Map[conY][conX] += sumfood;
 		}
 		else {
@@ -48,7 +48,7 @@ void oneYear(){
 					plant p;
 					p.y = nextY;
 					p.x = nextX;
-					push(p,1);
+					push(p, 1);
 				}
 			}
 		}
@@ -68,19 +68,19 @@ void oneYear(){
 }
 int main() {
 	//freopen("input.txt", "r", stdin);
-	scanf("%d %d %d", &N,&M,&K);
+	scanf("%d %d %d", &N, &M, &K);
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
-			scanf("%d",&foodMap[i][j]);
-			Map[i][j]=5;
+			scanf("%d", &foodMap[i][j]);
+			Map[i][j] = 5;
 		}
 	}
 	for (int i = 0; i < M; i++) {
 		plant p;
-		scanf("%d %d %d", &p.y,&p.x,&p.lifecnt);
+		scanf("%d %d %d", &p.y, &p.x, &p.lifecnt);
 		p.y--;
 		p.x--;
-		push(p,0);
+		push(p, 0);
 	}
 	for (int year = 0; year < K; year++) {
 		oneYear();

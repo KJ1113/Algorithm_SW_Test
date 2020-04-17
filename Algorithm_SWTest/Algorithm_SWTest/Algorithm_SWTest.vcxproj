@@ -170,7 +170,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="9.나무재태크.cpp" />
+    <ClCompile Include="나무 재테크.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
