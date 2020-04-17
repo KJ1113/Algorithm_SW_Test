@@ -168,6 +168,7 @@
     </ClCompile>
     <ClCompile Include="8.새로운 게임2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="9.나무재태크.cpp" />
   </ItemGroup>
