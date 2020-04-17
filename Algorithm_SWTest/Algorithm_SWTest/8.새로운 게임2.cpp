@@ -5,6 +5,7 @@
 using namespace std;
 const int MAX = 12;
 int N, K;
+int time = 0;
 int nextY, nextX;
 struct Word {
 	int index;
@@ -36,7 +37,7 @@ void nextpos(int y, int x, int dir) {
 	}
 }
 void move(int conY, int conX, int index) {
-	int listsize = Map[conY][conX].myWordlist.size();
+	int listsize = Map[conY][conX].myWordlist.size(); // conY, conX 위치에는 필연적으로 size가 1이상이므로 오류가 나지않는다.
 	bool moveble = true;
 	nextpos(conY, conX, wordspos[index].dir);
 	if (Map[nextY][nextX].color == 2 || (nextY < 0 || nextY >= N || nextX < 0 || nextX >= N)) {
@@ -114,7 +115,6 @@ int main() {
 		Map[w.y][w.x].myWordlist.push_back(w);
 		wordspos.push_back(w);
 	}
-	int time = 0;
 	while (true)
 	{
 		if (time == 1001) {
