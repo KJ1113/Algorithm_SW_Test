@@ -161,7 +161,10 @@
     <ClCompile Include="6. 게리맨더링2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="아기상어.cpp" />
+    <ClCompile Include="7. 아기상어.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="8.새로운 게임2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
