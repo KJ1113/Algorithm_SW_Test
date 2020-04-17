@@ -2,110 +2,138 @@
 #include<iostream>
 #include<cstdio>
 #include<queue>
-#include <vector>
 using namespace std;
+const int MAX = 12;
 int N, K;
-
-struct Words {
-	int y;
-	int x;
-	int Myk;
+int nextY, nextX;
+struct Word {
+	int index;
+	int y, x;
 	int dir;
 };
- 
-struct pos
-{
-	int color=0;
+struct MapWords {
+	int color = 0;
+	vector<Word> myWordlist;
 };
-pos Map[12][12];
-vector <Words> Wlist;
-void move(int index) {
-	int conY= Wlist[index].y;
-	int conX= Wlist[index].x;
-	int nextY = conY;
-	int nextX = conX;
-
-	if (Wlist[index].dir == 1) {
-		if (Wlist[index].y == 0) {
-			nextY++;
+MapWords Map[MAX][MAX]; // 말판과 벡터에 둘다저장
+vector <Word> wordspos;
+void nextpos(int y, int x, int dir) {
+	if (dir == 3) {
+		nextY = y - 1;
+		nextX = x;
+	}
+	else if (dir == 4) {
+		nextY = y + 1;
+		nextX = x;
+	}
+	else if (dir == 2) {
+		nextY = y;
+		nextX = x - 1;
+	}
+	else {
+		nextY = y;
+		nextX = x + 1;
+	}
+}
+void move(int conY, int conX, int index) {
+	int listsize = Map[conY][conX].myWordlist.size();
+	bool moveble = true;
+	nextpos(conY, conX, wordspos[index].dir);
+	if (Map[nextY][nextX].color == 2 || (nextY < 0 || nextY >= N || nextX < 0 || nextX >= N)) {
+		if (wordspos[index].dir == 1) {
+			wordspos[index].dir = 2;
+		}
+		else if (wordspos[index].dir == 2) {
+			wordspos[index].dir = 1;
+		}
+		else if (wordspos[index].dir == 3) {
+			wordspos[index].dir = 4;
 		}
 		else {
-			nextY--;
+			wordspos[index].dir = 3;
+		}
+		nextpos(conY, conX, wordspos[index].dir);
+		if (Map[nextY][nextX].color == 2 || (nextY < 0 || nextY >= N || nextX < 0 || nextX >= N)) {
+			// 움직임 없음
+			moveble = false;
 		}
 	}
-	else if (Wlist[index].dir == 2) {
-		if (Wlist[index].y == N-1) {
-			nextY--;
+	//내위에 몇명 있는지 체크
+	if (Map[conY][conX].myWordlist[listsize - 1].index != index) {
+		vector <Word> list;
+		bool flag = false;
+		for (int i = 0; i < listsize; i++) { // 현재 말의 위에있는 말들 저장
+			if (Map[conY][conX].myWordlist[i].index == index) {
+				flag = true;
+			}
+			if (flag == true) {
+				list.push_back(Map[conY][conX].myWordlist[i]);
+			}
 		}
-		else {
-			nextY++;
+		if (moveble == true) {
+			if (Map[nextY][nextX].color == 1) {
+				vector <Word> tmplist;
+				for (int i = list.size() - 1; i >= 0; i--) {
+					tmplist.push_back(list[i]);
+				}
+				list = tmplist;
+			}
+			for (int i = 0; i < list.size(); i++) {
+				int conindex = list[i].index;
+				wordspos[conindex].y = nextY;
+				wordspos[conindex].x = nextX;
+				Map[nextY][nextX].myWordlist.push_back(wordspos[conindex]);
+				Map[conY][conX].myWordlist.pop_back();
+			}
 		}
-	}
-	else if (Wlist[index].dir == 3) {
-		if (Wlist[index].x == 0) {
-			nextX++;
-		}
-		else {
-			nextX--;
-		}
-	}
-	else if(Wlist[index].dir == 4){
-		if (Wlist[index].x == N - 1) {
-			nextX--;
-		}
-		else {
-			nextX++;
-		}
-	}
-
-	if (Map[conY][conX].color == 1) {
-	}
-	else if (Map[conY][conX].color == 2) {
 
 	}
 	else {
-		Wlist[index].y = nextY;
-		Wlist[index].x = nextX;
+		if (moveble == true) {
+			wordspos[index].y = nextY;
+			wordspos[index].x = nextX;
+			Map[nextY][nextX].myWordlist.push_back(wordspos[index]);
+			Map[conY][conX].myWordlist.pop_back();
+		}
 	}
 }
 int main() {
-	freopen("input.txt","r",stdin);
-	scanf("%d %d", &N,&K);
+	//freopen("input.txt", "r", stdin);
+	scanf("%d %d", &N, &K);
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
-			int input;
-			scanf("%d", &input);
-			Map[i][j].color = input;
+			scanf("%d", &Map[i][j].color);
 		}
 	}
-	for (int i = 0; i < K;i++) {
-		int y, x, dir;
-		scanf("%d %d %d", &y,&x ,&dir);
-		Words w;
-		w.y = y-1;
-		w.x = x-1;
-		w.dir = dir;
-		Wlist.push_back(w);
-		
+	for (int index = 0; index < K; index++) {
+		Word w;
+		w.index = index;
+		scanf("%d %d %d", &w.y, &w.x, &w.dir);
+		w.y--;
+		w.x--;
+		Map[w.y][w.x].myWordlist.push_back(w);
+		wordspos.push_back(w);
 	}
 	int time = 0;
-	for (int i = 0; i < K; i++) {
-		Words w = Wlist[i];
-		cout << w.y << w.x << endl;
-	}
 	while (true)
 	{
-		time++;
-		if (time ==1001) {
-			printf("%d",-1);
-			break;
+		if (time == 1001) {
+			printf("%d", -1);
+			return 0;
 		}
 		else {
-			for (int index = 0; index < K; index++) {
-				move(index);
+			time++;
+			for (int i = 0; i < wordspos.size(); i++) {
+
+				int y = wordspos[i].y;
+				int x = wordspos[i].x;
+				move(y, x, i);
+				if (Map[wordspos[i].y][wordspos[i].x].myWordlist.size() >= 4) {
+					printf("%d", time);
+					return 0;
+				}
 			}
 		}
 	}
-
 	return 0;
 }
