@@ -15,9 +15,6 @@ struct plant {
 	bool life = true;
 };
 vector<plant> plist[2];
-void push(plant inputP, int index) {
-	plist[index].push_back(inputP);
-}
 void oneYear() {
 
 	for (int index = 0; index < plist[0].size(); index++) {
@@ -48,14 +45,14 @@ void oneYear() {
 					plant p;
 					p.y = nextY;
 					p.x = nextX;
-					push(p, 1);
+					plist[1].push_back(p);
 				}
 			}
 		}
 	}
 	for (int index = 0; index < plist[0].size(); index++) {
 		if (plist[0][index].life == true) {
-			push(plist[0][index], 1);
+			plist[1].push_back(plist[0][index]);
 		}
 	}
 	for (int i = 0; i < N; i++) {
@@ -80,7 +77,7 @@ int main() {
 		scanf("%d %d %d", &p.y, &p.x, &p.lifecnt);
 		p.y--;
 		p.x--;
-		push(p, 0);
+		plist[0].push_back(p);
 	}
 	for (int year = 0; year < K; year++) {
 		oneYear();
