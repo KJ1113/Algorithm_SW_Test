@@ -135,18 +135,64 @@ int nextPos(int conPos, int goSize) {
 			nextPos = 24;
 		}
 	}
-	else if (21 <= conPos && conPos <= 26) {
-		if (conPos + goSize >= 22) { //5
-			nextPos = 33;
+	else if (21 == conPos || conPos == 24) {
+		if (goSize == 3) { //5
+			nextPos = 29;
 		}
-		else if (conPos + goSize == 21) {//4
+		else if (goSize == 4) {//4
+			nextPos = 30;
+		}
+		else if (goSize == 5) {//4
+			nextPos = 31;
+		}
+		else {
+			nextPos = conPos + goSize;
+		}
+	}
+	else if (22 == conPos || conPos == 25) {
+		if (goSize == 2) { //5
+			nextPos = 29;
+		}
+		else if (goSize == 3) {//4
+			nextPos = 30;
+		}
+		else if (goSize == 4) {//4
+			nextPos = 31;
+		}
+		else if (goSize == 5) {
 			nextPos = 32;
 		}
 		else {
 			nextPos = conPos + goSize;
 		}
 	}
+	else if (23 == conPos || conPos == 26) {
+		if (goSize == 2) { //5
+			nextPos = 30;
+		}
+		else if (goSize == 3) {//4
+			nextPos = 31;
+		}
+		else if (goSize == 4) {//4
+			nextPos = 32;
+		}
+		else if (goSize == 5) {
+			nextPos = 33;
+		}
+		else {
+			nextPos = 29;
+		}
+	}
+	else if (goSize == 27 || goSize == 28) {
+		nextPos = conPos + goSize;
+	}
 	else {
+		if (conPos + goSize >= 33) { //5
+			nextPos = 33;
+		}
+		else {
+			nextPos = conPos + goSize;
+		}
 	}
 	return nextPos;
 }
@@ -214,10 +260,46 @@ int main() {
 	for (int i = 0; i < 10; i++) {
 		scanf("%d", &turnSize[i]);
 	}
-	/*for (int i = 0; i < 10; i++) {
-		cout << turnSize[i] << " ";
-	}
-	cout << endl;*/
+	Map[2].tmp = 2;
+	Map[3].tmp = 4;
+	Map[4].tmp = 6;
+	Map[5].tmp = 8;
+	Map[6].tmp = 10;
+
+	Map[7].tmp = 12;
+	Map[8].tmp = 14;
+	Map[9].tmp = 16;
+	Map[10].tmp = 18;
+	Map[11].tmp = 20;
+
+	Map[12].tmp = 22;
+	Map[13].tmp = 24;
+	Map[14].tmp = 26;
+	Map[15].tmp = 28;
+	Map[16].tmp = 30;
+
+	Map[17].tmp = 32;
+	Map[18].tmp = 34;
+	Map[19].tmp = 36;
+	Map[20].tmp = 38;
+	Map[32].tmp = 40;
+
+	Map[21].tmp = 13;
+	Map[22].tmp = 16;
+	Map[23].tmp = 19;
+	Map[24].tmp = 28;
+	Map[25].tmp = 27;
+	Map[26].tmp = 26;
+
+	Map[27].tmp = 22;
+	Map[28].tmp = 24;
+
+	Map[29].tmp = 24;
+	Map[29].tmp = 24;
+	Map[29].tmp = 24;
+	Map[29].tmp = 24;
+
+	cout << endl;
 	selWord(0, 0);
 	cout << ans;
 }
