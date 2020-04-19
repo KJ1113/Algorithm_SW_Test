@@ -172,8 +172,12 @@
     </ClCompile>
     <ClCompile Include="9. 나무 재테크.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="낚시왕.cpp" />
+    <ClCompile Include="10. 낚시왕.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="11. 윷놀이.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
