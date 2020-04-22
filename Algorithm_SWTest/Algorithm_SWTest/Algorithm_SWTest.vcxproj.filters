@@ -51,6 +51,12 @@
     <ClCompile Include="12 뱀.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="13. 이차원 배열과 연산.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="13사다리조작.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">
