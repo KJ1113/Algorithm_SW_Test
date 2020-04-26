@@ -57,7 +57,6 @@ void BFS() {
 
 		}
 	}
-
 }
 int main() {
 	//freopen("input.txt", "r", stdin);
@@ -67,7 +66,7 @@ int main() {
 			scanf("%d", &Map[i][j]);
 		}
 	}
-	while (true){
+	while (true) {
 		BFS();
 		if (falg == false) {
 			printf("%d", ens);
