@@ -112,7 +112,7 @@ void selectPoint(int cnt, int Maxcnt, int index) {
 	}
 }
 int main() {
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 	scanf("%d %d %d", &N, &M, &D);
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
@@ -126,7 +126,6 @@ int main() {
 			}
 		}
 	}
-	tmp_aimMans = aimMans;
 	for (int num = 1; num <= 3; num++) {
 		selectPoint(0, num, 0);
 	}
