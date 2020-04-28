@@ -63,7 +63,10 @@
     <ClCompile Include="15. 캐슬디펜스.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="16 괄호추가.cpp">
+    <ClCompile Include="17. 색종이 붙이기.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="16. 괄호추가.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
