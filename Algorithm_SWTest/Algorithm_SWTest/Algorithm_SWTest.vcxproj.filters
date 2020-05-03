@@ -75,6 +75,9 @@
     <ClCompile Include="19. 퇴사.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="20. 2048.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">
