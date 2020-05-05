@@ -13,70 +13,88 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\SW기출">
+      <UniqueIdentifier>{c5b132fe-f1a1-4bdf-81b9-4ea282b63721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\추천문제">
+      <UniqueIdentifier>{cf569de9-afe8-4ef4-b050-5defae095304}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1. 시험감독.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="2. 테트로미노.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="6. 게리맨더링2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="7. 아기상어.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="3. 연구소3.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="4. 게리맨더링.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="5. 원판돌리기.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
+    </ClCompile>
+    <ClCompile Include="6. 게리맨더링2.cpp">
+      <Filter>소스 파일\SW기출</Filter>
+    </ClCompile>
+    <ClCompile Include="7. 아기상어.cpp">
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="8. 새로운 게임2.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="9. 나무 재테크.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="10. 낚시왕.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="11. 윷놀이.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="12 뱀.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="13. 이차원 배열과 연산.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="13. 사다리조작.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
+    </ClCompile>
+    <ClCompile Include="13. 이차원 배열과 연산.cpp">
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="14. 인구이동.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="15. 캐슬디펜스.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="17. 색종이 붙이기.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="16. 괄호추가.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
+    </ClCompile>
+    <ClCompile Include="17. 색종이 붙이기.cpp">
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="18. 구슬탈출.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="19. 퇴사.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
     <ClCompile Include="20. 2048.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\SW기출</Filter>
+    </ClCompile>
+    <ClCompile Include="21.Puyo Puyo.cpp">
+      <Filter>소스 파일\추천문제</Filter>
+    </ClCompile>
+    <ClCompile Include="22. 탈출.cpp">
+      <Filter>소스 파일\추천문제</Filter>
+    </ClCompile>
+    <ClCompile Include="23. 두 동전.cpp">
+      <Filter>소스 파일\추천문제</Filter>
+    </ClCompile>
+    <ClCompile Include="24. Maaaaaaaaaze.cpp">
+      <Filter>소스 파일\추천문제</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
