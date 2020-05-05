@@ -108,17 +108,20 @@ int main() {
 					for (int four = 0; four < 4; four++) {
 						int tmpMap[5][5][5];
 						memcpy(tmpMap, solveMap, sizeof(solveMap));
-						move(0, one);
-						move(1, two);
-						move(2, three);
-						move(3, four);
+						move(1, one);
+						move(2, two);
+						move(3, three);
+						move(4, four);
 						bfs();
 						memcpy(solveMap, tmpMap, sizeof(solveMap));
 					}
 				}
 			}
 		}
-
+		if (result == 12) { // 12보다 짧은 최단 거리는 없음
+			printf("%d", result);
+			return 0;
+		}
 	} while (next_permutation(hIndex.begin(), hIndex.end()));
 	if (result==999999) {
 		printf("%d",-1);
@@ -126,4 +129,5 @@ int main() {
 	else {
 		printf("%d", result);
 	}
+	return 0;
 }
