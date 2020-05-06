@@ -96,6 +96,15 @@
     <ClCompile Include="24. Maaaaaaaaaze.cpp">
       <Filter>소스 파일\추천문제</Filter>
     </ClCompile>
+    <ClCompile Include="25. 부등호.cpp">
+      <Filter>소스 파일\추천문제</Filter>
+    </ClCompile>
+    <ClCompile Include="26 보이저 1호.cpp">
+      <Filter>소스 파일\추천문제</Filter>
+    </ClCompile>
+    <ClCompile Include="27. 로봇시뮬레이터.cpp">
+      <Filter>소스 파일\추천문제</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">

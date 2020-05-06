@@ -80,6 +80,10 @@ void bfs() {
 					if (nextY == endY && endX == nextX && nextH == endH) {
 						ans = cnt;
 						result = min(result, ans);
+						if (result == 12) { // 12보다 짧은 최단 거리는 없음
+							printf("%d", result);
+							exit(0);
+						}
 					};
 				}
 			}
@@ -87,7 +91,7 @@ void bfs() {
 	}
 }
 int main() {
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 	for (int h = 0; h < 5; h++) {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
@@ -117,10 +121,6 @@ int main() {
 					}
 				}
 			}
-		}
-		if (result == 12) { // 12보다 짧은 최단 거리는 없음
-			printf("%d", result);
-			return 0;
 		}
 	} while (next_permutation(hIndex.begin(), hIndex.end()));
 	if (result==999999) {
