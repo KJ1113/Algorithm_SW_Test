@@ -1,92 +1,120 @@
 #pragma warning (disable :4996)
 #include <cstdio>
-#include <cstring>
 #include <queue>
-#include <iostream>
 #include <algorithm>
 #include <vector>
+#include <iostream>
 using namespace std;
-int Map[1000][1000];
-int solMap[1000][1000];
-int markMap[1000][1000];
-bool vist[1000][1000];
-int N, M;
-int dir[4][2] = { {1,0} ,{-1,0}, {0,1}, {0,-1} };
-vector<pair<int, int>> v;
-vector<pair<int, int>> vone;
-void bfs(int y,int x,int mark) {
-	queue <pair<int,int>> q;
-	queue <pair<int, int>> qtwo;
-	q.push(pair<int, int>(y,x));
-	qtwo.push(pair<int, int>(y, x));
-	vist[y][x] = true;
-	int cnt = 1;
+struct point {
+	int y, x, d;
+};
+queue <point> q;
+char Map[51][51];
+int N ,fy,fx;
+int ans = 999999;
+int vist[51][51][4];
+int dir[4][2] = { {-1,0} ,{1,0}, {0,-1}, {0,1} };
+void move() {
 	while (!q.empty()){
-		int cunY =q.front().first;
-		int cunX =q.front().second;
+		int cunY = q.front().y;
+		int cunX = q.front().x;
+		int cund = q.front().d;
 		q.pop();
-		for (int i = 0; i < 4;i++) {
-			int nextY = cunY + dir[i][0];
-			int nextX = cunX + dir[i][1];
-			if (nextY < 0 || nextY >= N || nextX < 0 || nextX >= M || vist[nextY][nextX] == true) continue;
-			if (Map[nextY][nextX] == 0) {
-				q.push(pair<int, int>(nextY, nextX));
-				qtwo.push(pair<int, int>(nextY, nextX));
-				vist[nextY][nextX] = true;
-				cnt++;
+		int nextY = cunY + dir[cund][0];
+		int nextX = cunX + dir[cund][1];
+		if (nextY < 0 || nextY >= N || nextX < 0 || nextX >= N) continue;
+		if ( Map[nextY][nextX] == '*') continue;
+		if (Map[nextY][nextX] == '.') {
+			if (vist[nextY][nextX][cund] > vist[cunY][cunX][cund]) {
+				vist[nextY][nextX][cund] = vist[cunY][cunX][cund];
+				point p;
+				p.y = nextY;
+				p.x = nextX;
+				p.d = cund;
+				q.push(p);
 			}
 		}
-	}
-	while (!qtwo.empty()){
-		solMap[qtwo.front().first][qtwo.front().second] = cnt;
-		markMap[qtwo.front().first][qtwo.front().second] = mark;
-		qtwo.pop();
+		if (Map[nextY][nextX] == '!') {
+			
+			if (vist[nextY][nextX][cund] > vist[cunY][cunX][cund]) {
+				vist[nextY][nextX][cund] = vist[cunY][cunX][cund];
+				point p;
+				p.y = nextY;
+				p.x = nextX;
+				p.d = cund;
+				q.push(p);
+			}
+			if (cund == 0 || cund ==1 ) {
+				if (vist[nextY][nextX][2] > vist[cunY][cunX][cund] + 1) {
+					vist[nextY][nextX][2] = vist[cunY][cunX][cund] + 1;
+					point p;
+					p.y = nextY;
+					p.x = nextX;
+					p.d = 2;
+					q.push(p);
+				}
+				if (vist[nextY][nextX][3] > vist[cunY][cunX][cund] + 1) {
+					vist[nextY][nextX][3] = vist[cunY][cunX][cund] + 1;
+					point p;
+					p.y = nextY;
+					p.x = nextX;
+					p.d = 3;
+					q.push(p);
+				}
+			}
+			else {
+				if (vist[nextY][nextX][0] > vist[cunY][cunX][cund] + 1) {
+					vist[nextY][nextX][0] = vist[cunY][cunX][cund] + 1;
+					point p;
+					p.y = nextY;
+					p.x = nextX;
+					p.d = 0;
+					q.push(p);
+				}
+				if (vist[nextY][nextX][1] > vist[cunY][cunX][cund] + 1) {
+					vist[nextY][nextX][1] = vist[cunY][cunX][cund] + 1;
+					point p;
+					p.y = nextY;
+					p.x = nextX;
+					p.d = 1;
+					q.push(p);
+				}
+			}
+		}
+		if (Map[nextY][nextX] == '#'&& fy == nextY && fx == nextX) {
+			vist[nextY][nextX][cund] = vist[cunY][cunX][cund];
+			ans = min(ans, vist[nextY][nextX][cund]);
+		}
 	}
 }
 int main() {
 	freopen("input.txt", "r", stdin);
-	scanf("%d %d",&N ,&M);
+	scanf("%d",&N );
 	for (int i = 0; i < N;i++) {
-		for (int j = 0; j < M; j++) {
-			scanf("%1d", &Map[i][j]);
-			if (Map[i][j] == 0) { v.push_back(pair<int, int>(i, j)); }
-			else { vone.push_back(pair<int, int>(i, j)); }
-		}
-	}
-	int num = 1;
-	for (int index = 0; index < v.size();index++) {
-		if (vist[v[index].first][v[index].second] == false) {
-			bfs(v[index].first, v[index].second, num++);
-		}
-	}
-	for (int index = 0; index < vone.size(); index++) {
-		int cunY = vone[index].first;
-		int cunX = vone[index].second;
-		int marks[4] = { -1,-1,-1,-1 };
-		int sum =1;
-		for (int i = 0; i < 4; i++) {
-			bool falg = false;
-			int nextY = cunY + dir[i][0];
-			int nextX = cunX + dir[i][1];
-			if (nextY < 0 || nextY >= N || nextX < 0 || nextX >= M ) continue;
-			if (solMap[nextY][nextX] == 0) continue;
-			for (int j = 0;j<4;j++) {
-				if (marks[j] == markMap[nextY][nextX]) {
-					falg = true;
-					break;
+		for (int j = 0; j < N; j++) {
+			scanf("%1s", &Map[i][j]);
+			for (int d = 0; d < 4; d++) {
+				vist[i][j][d] = 999999;
+			}
+			if (Map[i][j] == '#') {
+				if (q.empty()) {
+					for (int d = 0; d < 4; d++) {
+						point p;
+						p.y = i;
+						p.x = j;
+						p.d = d;
+						q.push(p);
+						vist[i][j][d] = 0;
+					}
+				}
+				else {
+					fy = i;
+					fx = j;
 				}
 			}
-			if (falg == true) continue;
-			sum = sum + solMap[nextY][nextX];
-			marks[i] = markMap[nextY][nextX];
 		}
-		Map[cunY][cunX] = sum;
 	}
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < M; j++) {
-			printf("%d", Map[i][j]%10);
-		}
-		printf("\n");
-	}
+	move();
+	printf("%d", ans);
 	return 0;
 }

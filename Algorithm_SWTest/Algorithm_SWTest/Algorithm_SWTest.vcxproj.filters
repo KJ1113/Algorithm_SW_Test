@@ -54,9 +54,6 @@
     <ClCompile Include="11. 윷놀이.cpp">
       <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
-    <ClCompile Include="12 뱀.cpp">
-      <Filter>소스 파일\SW기출</Filter>
-    </ClCompile>
     <ClCompile Include="13. 사다리조작.cpp">
       <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
@@ -84,9 +81,6 @@
     <ClCompile Include="20. 2048.cpp">
       <Filter>소스 파일\SW기출</Filter>
     </ClCompile>
-    <ClCompile Include="21.Puyo Puyo.cpp">
-      <Filter>소스 파일\추천문제</Filter>
-    </ClCompile>
     <ClCompile Include="22. 탈출.cpp">
       <Filter>소스 파일\추천문제</Filter>
     </ClCompile>
@@ -106,6 +100,18 @@
       <Filter>소스 파일\추천문제</Filter>
     </ClCompile>
     <ClCompile Include="28 벽부수고 이동하기.cpp">
+      <Filter>소스 파일\추천문제</Filter>
+    </ClCompile>
+    <ClCompile Include="21. Puyo Puyo.cpp">
+      <Filter>소스 파일\추천문제</Filter>
+    </ClCompile>
+    <ClCompile Include="12. 뱀.cpp">
+      <Filter>소스 파일\SW기출</Filter>
+    </ClCompile>
+    <ClCompile Include="29. 통나무 옮기기.cpp">
+      <Filter>소스 파일\추천문제</Filter>
+    </ClCompile>
+    <ClCompile Include="30 레이저통신.cpp">
       <Filter>소스 파일\추천문제</Filter>
     </ClCompile>
   </ItemGroup>
