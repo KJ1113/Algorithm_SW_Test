@@ -239,6 +239,7 @@
     <ClCompile Include="13. 이차원 배열과 연산.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
