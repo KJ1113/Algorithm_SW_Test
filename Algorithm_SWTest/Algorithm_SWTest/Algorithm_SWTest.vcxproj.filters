@@ -111,10 +111,10 @@
     <ClCompile Include="29. 통나무 옮기기.cpp">
       <Filter>소스 파일\추천문제</Filter>
     </ClCompile>
-    <ClCompile Include="30 레이저통신.cpp">
+    <ClCompile Include="31. DSLR.cpp">
       <Filter>소스 파일\추천문제</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="30. 레이저통신.cpp">
       <Filter>소스 파일\추천문제</Filter>
     </ClCompile>
   </ItemGroup>
